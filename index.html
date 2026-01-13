@@ -2,89 +2,138 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kishore Ravi — About</title>
 
+<link rel="stylesheet" href="header.css">
+
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* { box-sizing: border-box; }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: monospace;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+/* ===== MAIN ===== */
+.main {
+    position: absolute;
+    top: 120px;
+    bottom: 70px;
+    left: 40px;
+    right: 40px;
+    display: flex;
+}
+
+.left {
+    width: 32%;
+    padding-right: 40px;
+}
+
+.right {
+    width: 68%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* ===== CONTENT ===== */
+.about-text {
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* ===== VIDEO ===== */
+.about-video {
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(0.88);
+    transform-origin: top center;
+}
+
+/* ===== NAV ===== */
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
     body {
-        margin: 0;
-        padding: 30px 40px;
-        background: #000000;
-        color: #ffffff;
-        font-family: monospace;
-        font-size: 16px;
+        padding: 20px;
+        padding-bottom: 70px;
+        overflow: auto;
     }
 
-    .container {
-        display: flex;
-        align-items: flex-start;
+    .main {
+        position: static;
+        flex-direction: column;
+        padding: 0;
     }
 
-    .left {
-        width: 32%;
-        padding-right: 40px;
-    }
-
+    .left,
     .right {
-        width: 68%;
-        position: relative;
+        width: 100%;
+        padding: 0;
     }
 
-    h1 {
-        margin: 0 0 40px 0;
-        font-size: 30px;
-        font-weight: normal;
+    .about-video {
+        height: 240px;
+        transform: none;
     }
 
     .about-text {
-        line-height: 1.6;
-        white-space: pre-line;
-    }
-
-    .role {
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 14px;
-    }
-
-    /* Image now fills right container width */
-    .about-image {
-        margin-top: 28px;
-        width: 100%;
-        height: 650px;       /* same as previous frame */
-        border: 0;
-        display: block;
-        object-fit: cover;
+        margin-bottom: 24px;
     }
 
     .nav {
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60%;
-        display: flex;
-        justify-content: space-between;
+        left: 0;
+        transform: none;
+        width: 100%;
+        padding: 14px 20px;
+        height: auto;
     }
 
     .nav a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 18px;
+        font-size: 16px;
     }
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <div class="left">
-        <h1>kishore ravi</h1>
+<div class="header">
+    <h1>kishore ravi</h1>
+    <div class="role">filmmaker - director - editor</div>
+</div>
 
+<div class="main">
+    <div class="left">
         <div class="about-text">
 I work as a director and editor
 across fiction, documentary,
@@ -92,15 +141,20 @@ and commercial projects.
 
 My work engages with
 manifestations of caste,
-class, alienation, 
+class, alienation,
 and structural violence.
         </div>
     </div>
 
     <div class="right">
-        <div class="role">filmmaker - director - editor</div>
-        <!-- Image now fills width of right column -->
-        <img src="red me.jpg" alt="Kishore Ravi" class="about-image">
+        <video
+            src="RPReplay.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="about-video">
+        </video>
     </div>
 </div>
 

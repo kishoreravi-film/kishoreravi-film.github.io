@@ -2,44 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kishore Ravi - Work</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kishore Ravi — Work</title>
+
+<link rel="stylesheet" href="header.css">
 
 <style>
-    * {
-        box-sizing: border-box;
+* { box-sizing: border-box; }
+
+/* ================= DESKTOP ================= */
+@media (min-width: 769px) {
+
+    html, body {
+        height: 100%;
+        margin: 0;
     }
 
     body {
-        margin: 0;
-        padding: 30px 40px;
-        background: #000000;
-        color: #ffffff;
+        background: #000;
+        color: #fff;
         font-family: monospace;
         font-size: 16px;
+        overflow: hidden;
     }
 
+    /* ===== MAIN ===== */
     .container {
+        position: absolute;
+        top: 120px;
+        bottom: 70px;
+        left: 40px;
+        right: 40px;
         display: flex;
-        align-items: flex-start;
-        gap: 40px;
     }
 
-    .left {
-        width: 36%;
-    }
+    .left { width: 36%; }
+    .right { width: 64%; }
 
-    .right {
-        width: 64%;
-        position: relative;
-        padding-top: 80px;
-    }
-
-    h1 {
-        margin: 0 0 24px 0;
-        font-size: 30px;
-        font-weight: normal;
-    }
-
+    /* ===== SECTIONS ===== */
     .section {
         margin-bottom: 26px;
     }
@@ -50,15 +50,20 @@
         text-transform: lowercase;
     }
 
+    .section-title a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* ===== LISTS ===== */
     ul {
+        list-style: none;
         margin: 0;
         padding: 0;
-        list-style: none;
     }
 
     li {
-        line-height: 1.5;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
     }
 
     button.project {
@@ -66,171 +71,274 @@
         border: none;
         padding: 0;
         font-family: monospace;
-        color: #ffffff;
+        color: #fff;
         cursor: pointer;
+        display: block;
+        text-align: left;
+    }
+
+    li button.project::before {
+        content: "- ";
     }
 
     button.project:hover {
         opacity: 0.7;
     }
 
-    .role {
-        position: absolute;
-        top: 16px;
-        right: 0;
-        font-size: 14px;
-        background: #000;
-        padding: 2px 4px;
-    }
-
+    /* ===== MEDIA ===== */
     #videoFrame,
     #projectText {
         display: none;
     }
 
-    iframe,
-    .project-image {
+    /* ===== VIDEO ===== */
+    #videoFrame iframe {
         width: 100%;
         height: 420px;
         border: none;
         display: block;
+        transform: scale(0.5);
+        transform-origin: top left;
     }
 
+    #videoFrame.has-video {
+        height: 210px;
+    }
+
+    /* ===== IMAGE ===== */
     .project-image {
+        max-width: 50%;
         height: auto;
+        display: block;
+        transform: scale(0.75);
+        transform-origin: top left;
+        margin-bottom: -60px;
+    }
+
+    /* ===== PROJECT TEXT ===== */
+    .project-text {
+        margin-top: 12px;
+        line-height: 1.8;
+        white-space: pre-line;
+        font-size: 14px;
+        color: #fff;
+        background: none;
+        letter-spacing: 0.01em;
+    }
+
+    /* ===== OVERLAY (desktop hidden) ===== */
+    #overlayCard {
+        display: none;
+    }
+}
+
+/* ================= NAV (ALL) ================= */
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    z-index: 1000;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+   
+
+
+    body {
+        padding: 12px;
+        padding-bottom: 70px;
+        overflow: auto;
+        font-family: monospace;
+        font-size: 16px;
+        background: #000;
+        color: #fff;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    /* ===== MOBILE WORK LIST ===== */
+    button.project {
+        background: none;
+        color: #fff;
+        padding: 0;
+        border: none;
+        font-family: monospace;
+        text-align: left;
+        width: 100%;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        padding-left: 14px;
+        position: relative;
+        margin-bottom: 6px;
+    }
+
+    li::before {
+        content: "-";
+        position: absolute;
+        left: 0;
+        color: #fff;
+    }
+
+    li button.project::before {
+        content: "";
     }
 
     .project-text {
-        margin-top: 18px;
+        color: #fff;
+        background: none;
+        font-size: 14px;
         line-height: 1.6;
         white-space: pre-line;
-        font-size: 16px;
-    }
-
-    .nav {
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .nav a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 18px;
     }
 
     .section-title a {
-        color: #ffffff;
+        color: #fff;
         text-decoration: none;
     }
+
+    .nav {
+        left: 0;
+        transform: none;
+        width: 100%;
+        padding: 14px 20px;
+        height: auto;
+    }
+
+    .nav a {
+        font-size: 16px;
+    }
+
+    /* ===== MOBILE OVERLAY ===== */
+    #overlayCard {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 480px;
+        max-height: 90%;
+        background: #111;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+        z-index: 2000;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    #overlayCard iframe,
+    #overlayCard .project-image {
+        max-width: 100%;
+        max-height: 240px;
+        transform: none;
+    }
+
+    #overlayCard .closeBtn {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        font-size: 28px;
+        color: #fff;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<div class="header">
+    <h1>kishore ravi</h1>
+    <div class="role">filmmaker - director - editor</div>
+</div>
+
 <div class="container">
-<div class="left">
-<h1>kishore ravi</h1>
 
-<div class="section">
-<div class="section-title">independent</div>
-<ul>
-<li>- <button class="project" onclick="loadImageProject(
-    'images/take-care-wip.jpg',
-    'take care (2026)\n\na wip short-film about home-based healthcare workers.'
-)">take care</button></li>
+    <div class="left">
 
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/yes4-2H4JuI',
-    'dialogue of the deaf (2021)\n(9 mins)\n\na young college student returns to his student housing and tries, despite himself, to have a conversation.'
-)">dialogue of the deaf</button></li>
+        <div class="section">
+            <div class="section-title">independent</div>
+            <ul>
+                <li><button class="project" onclick="openOverlayImage('take-care-wip.jpg','take care (2026)\n\na wip short-film about home-based healthcare workers.')">take care</button></li>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/yes4-2H4JuI','dialogue of the deaf (2021)\n(9 mins)\n\na young college student returns to his student housing and tries, despite himself, to have a conversation.')">dialogue of the deaf</button></li>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/-3yBxR9Y1ME','archipelago (2021)\n(4 mins 25 secs)\n\nthe filmmaker tries to figure out why his family is like that.')">archipelago</button></li>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/C7-wvSQ2vA4','yearning (2021)\n(1 min 5 secs)\n\na 6-shot silent film on loss.')">yearning</button></li>
+            </ul>
+        </div>
 
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/-3yBxR9Y1ME',
-    'archipelago (2021)\n(4 mins 25 secs)\n\nthe filmmaker tries to figure out why his family is like that.'
-)">archipelago</button></li>
+        <div class="section">
+            <div class="section-title">commissioned</div>
+            <ul>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/2zPh7EF47Qo','BBC: How to eat Indian food (2021)\n(5 min 15 secs)\n\na short documentary on the art of eating with hands.')">BBC: how to eat indian food</button></li>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/0ClJa5ICJpY','The Plate: A wonder in the wasteland (2025)\n(15 mins)\n\nin the heart of Rajasthan’s arid lands, the farmers of a tiny village have unlocked a farming revolution.')">the plate: a wonder in the wasteland</button></li>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/10jiqwZmELY','The Plate: Jasmine’s journey (2025)\n(14 mins 45 secs)\n\nset in the jasmine-growing regions of Madurai, the film follows a night-blooming flower.')">the plate: jasmine’s journey</button></li>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/yGSMem3n3-U','BBC: What the West gets wrong about Eastern philosophy (2021)\n(5 mins 27 secs)\n\na short documentary on the meaning of life as per eastern thought.')">BBC: what the west gets wrong about eastern philosophy</button></li>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/tZAT4ba19tk','Stories Asia: End of the Line (2021)\n(4 mins 38 secs)\n\na short documentary on the dying art of shadow fishing.')">stories asia: end of the line</button></li>
+                <li><button class="project" onclick="openOverlayVideo('https://www.youtube-nocookie.com/embed/fyVGJAq45y8','Stories Asia: A Frozen Lake, Several Frozen Lives (2021)\n(5 mins 37 secs)\n\nduring one of Kashmir’s harshest winters, houseboat owners confront frozen waters.')">stories asia: a frozen lake, several frozen lives</button></li>
+            </ul>
+        </div>
 
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/C7-wvSQ2vA4',
-    'yearning (2021)\n(1 min 5 secs)\n\na 6-shot silent film on loss.'
-)">yearning</button></li>
-</ul>
+        <div class="section">
+            <div class="section-title">
+                <a href="https://youtube.com/playlist?list=PL3l9Kw2XIlRVSjCxfJckzaS5APFuXHckg" target="_blank">
+                    commercials / corporate reel ↗
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right">
+        <div id="videoFrame"></div>
+        <div id="projectText" class="project-text"></div>
+    </div>
+
 </div>
 
-<div class="section">
-<div class="section-title">commissioned</div>
-<ul>
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/2zPh7EF47Qo',
-    'BBC: How to eat Indian food (2021)\n(5 min 15 secs)\n\na short documentary on the art of eating with hands.'
-)">BBC: how to eat indian food</button></li>
-
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/0ClJa5ICJpY',
-    'The Plate: A wonder in the wasteland (2025)\n(15 mins)\n\nin the heart of Rajasthan’s arid lands, the farmers of a tiny village have unlocked a farming revolution.'
-)">the plate: a wonder in the wasteland</button></li>
-
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/10jiqwZmELY',
-    'The Plate: Jasmine’s journey (2025)\n(14 mins 45 secs)\n\nset in the jasmine-growing regions of Madurai, the film follows a night-blooming flower.'
-)">the plate: jasmine’s journey</button></li>
-
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/yGSMem3n3-U',
-    'BBC: What the West gets wrong about Eastern philosophy (2021)\n(5 mins 27 secs)\n\na short documentary on the meaning of life as per eastern thought.'
-)">BBC: what the west gets wrong about eastern philosophy</button></li>
-
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/tZAT4ba19tk',
-    'Stories Asia: End of the Line (2021)\n(4 mins 38 secs)\n\na short documentary on the dying art of shadow fishing.'
-)">stories asia: end of the line</button></li>
-
-<li>- <button class="project" onclick="loadProject(
-    'https://www.youtube-nocookie.com/embed/fyVGJAq45y8',
-    'Stories Asia: A Frozen Lake, Several Frozen Lives (2021)\n(5 mins 37 secs)\n\nduring one of Kashmir’s harshest winters, houseboat owners confront frozen waters.'
-)">stories asia: a frozen lake, several frozen lives</button></li>
-</ul>
-</div>
-
-<div class="section">
-<div class="section-title">
-<a href="https://youtube.com/playlist?list=PL3l9Kw2XIlRVSjCxfJckzaS5APFuXHckg" target="_blank">
-commercials / corporate reel ↗
-</a>
-</div>
-</div>
-</div>
-
-<div class="right">
-<div class="role">filmmaker - director - editor</div>
-<div id="videoFrame"></div>
-<div id="projectText" class="project-text"></div>
-</div>
-</div>
-
-<div class="nav">
-<a href="index.html">[ about ]</a>
-<a href="work.html">[ work ]</a>
-<a href="blog.html">[ blog ]</a>
-<a href="contact.html">[ contact ]</a>
+<div id="overlayCard">
+    <button class="closeBtn" onclick="closeOverlay()">×</button>
+    <div id="overlayContent"></div>
+    <div id="overlayText" class="project-text"></div>
 </div>
 
 <script>
 function loadProject(videoUrl, text) {
     const frame = document.getElementById('videoFrame');
     const textBox = document.getElementById('projectText');
-
-    frame.innerHTML = `
-        <iframe 
-            src="${videoUrl}" 
-            allow="autoplay; fullscreen" 
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>`;
+    frame.classList.add('has-video');
+    frame.innerHTML = `<iframe src="${videoUrl}" allowfullscreen></iframe>`;
     frame.style.display = 'block';
     textBox.style.display = 'block';
     textBox.textContent = text;
@@ -239,13 +347,46 @@ function loadProject(videoUrl, text) {
 function loadImageProject(imageUrl, text) {
     const frame = document.getElementById('videoFrame');
     const textBox = document.getElementById('projectText');
-
+    frame.classList.remove('has-video');
     frame.innerHTML = `<img src="${imageUrl}" class="project-image">`;
     frame.style.display = 'block';
     textBox.style.display = 'block';
     textBox.textContent = text;
 }
+
+function openOverlayVideo(videoUrl, text) {
+    if (window.innerWidth <= 768) {
+        overlayCard.style.display = 'block';
+        overlayContent.innerHTML = `<iframe src="${videoUrl}" allowfullscreen></iframe>`;
+        overlayText.textContent = text;
+    } else {
+        loadProject(videoUrl, text);
+    }
+}
+
+function openOverlayImage(imageUrl, text) {
+    if (window.innerWidth <= 768) {
+        overlayCard.style.display = 'block';
+        overlayContent.innerHTML = `<img src="${imageUrl}" class="project-image">`;
+        overlayText.textContent = text;
+    } else {
+        loadImageProject(imageUrl, text);
+    }
+}
+
+function closeOverlay() {
+    overlayCard.style.display = 'none';
+    overlayContent.innerHTML = '';
+    overlayText.textContent = '';
+}
 </script>
+
+<div class="nav">
+    <a href="index.html">[ about ]</a>
+    <a href="work.html">[ work ]</a>
+    <a href="blog.html">[ blog ]</a>
+    <a href="contact.html">[ contact ]</a>
+</div>
 
 </body>
 </html>

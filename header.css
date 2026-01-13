@@ -1,0 +1,51 @@
+/* ===== GLOBAL HEADER ===== */
+
+.header {
+    position: fixed;
+    top: 30px;
+    left: 40px;
+    right: 40px;
+
+    padding-right: 60px;   /* offsets role from right margin */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    background: #000;
+    z-index: 1000;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.header .role {
+    font-size: 14px;
+    line-height: 1;
+    text-align: right;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .header {
+        position: static;
+        padding: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+
+    .header .role {
+        text-align: left;
+        margin-bottom: 12px;
+    }
+}

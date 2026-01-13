@@ -2,101 +2,122 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kishore Ravi — Contact</title>
 
+<link rel="stylesheet" href="header.css">
+
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* { box-sizing: border-box; }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: monospace;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+/* ===== MAIN ===== */
+.main {
+    position: absolute;
+    top: 120px;
+    bottom: 70px;
+    left: 40px;
+    right: 40px;
+    overflow: auto;
+}
+
+.left { width: 32%; }
+.right { width: 68%; }
+
+.contact-text {
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.contact-text a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* ===== NAV ===== */
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
     body {
-        margin: 0;
-        padding: 30px 40px;
-        background: #000000;
-        color: #ffffff;
-        font-family: monospace;
-        font-size: 16px;
+        padding: 20px;
+        padding-bottom: 70px;
+        overflow: auto;
     }
 
-    .container {
-        display: flex;
-        align-items: flex-start;
-    }
-
-    .left {
-        width: 32%;
-        padding-right: 40px;
-    }
-
-    .right {
-        width: 68%;
-        position: relative;
-    }
-
-    h1 {
-        margin: 0 0 40px 0;
-        font-size: 30px;
-        font-weight: normal;
+    .main {
+        position: static;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
     }
 
     .contact-text {
-        line-height: 1;
-        white-space: pre-line;
-        font-size: 16px;
-    }
-
-    .contact-text a {
-        color: #ffffff;
-        text-decoration: none;
-    }
-
-    .role {
-        position: absolute;
-        top: 0;
-        right: 0;
         font-size: 14px;
     }
 
     .nav {
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60%;
-        display: flex;
-        justify-content: space-between;
+        left: 0;
+        transform: none;
+        width: 100%;
+        padding: 14px 20px;
+        height: auto;
     }
 
     .nav a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 18px;
+        font-size: 16px;
     }
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="header">
+    <h1>kishore ravi</h1>
+    <div class="role">filmmaker - director - editor</div>
+</div>
+
+<div class="main">
     <div class="left">
-        <h1>kishore ravi</h1>
-
         <div class="contact-text">
-<a href="mailto:contact@kishoreravi.com">contact@kishoreravi.com</a>
-
-<a href="https://www.instagram.com/iamnotkishoreravi/" target="_blank" rel="noopener noreferrer">
-instagram.com/iamnotkishoreravi
-</a>
-<a href="https://www.linkedin.com/in/1kishoreravi/" target="_blank" rel="noopener noreferrer">
-linkedin.com/in/1kishoreravi
-</a>
+            <a href="mailto:contact@kishoreravi.com">contact@kishoreravi.com</a>
+            <a href="https://www.instagram.com/iamnotkishoreravi/" target="_blank">instagram.com/iamnotkishoreravi</a>
+            <a href="https://www.linkedin.com/in/1kishoreravi/" target="_blank">linkedin.com/in/1kishoreravi</a>
         </div>
     </div>
-
-    <div class="right">
-        <div class="role">filmmaker - director - editor</div>
-        <!-- intentionally empty -->
-    </div>
+    <div class="right"></div>
 </div>
 
 <div class="nav">
