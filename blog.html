@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kishore Ravi — Blog</title>
+<title>Kishore Ravi — Current</title>
 
 <link rel="stylesheet" href="header.css">
 
@@ -31,15 +31,80 @@ body {
     left: 40px;
     right: 40px;
     display: flex;
-    overflow: auto;
+    overflow: hidden; /* ensures one-screen fit on desktop */
 }
 
-.left { width: 32%; }
-.right { width: 68%; }
+.left { 
+    width: 40%;
+    padding-right: 40px;
+}
+
+.right { 
+    width: 60%;
+}
 
 .wip {
     line-height: 1.6;
     white-space: pre-line;
+}
+
+/* ===== SECTION COLORS ===== */
+.section-stage {
+    color: #6ee7b7;   /* soft green */
+}
+
+.section-next {
+    color: #60a5fa;   /* muted blue */
+}
+
+.section-support {
+    color: #fbbf24;   /* warm amber */
+}
+
+/* ===== LINK STYLE ===== */
+.deck-link {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.deck-link:hover {
+    opacity: 0.7;
+}
+
+/* ===== PDF OVERLAY ===== */
+#deckOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+}
+
+.deckContent {
+    width: 80%;
+    height: 85%;
+    background: #000;
+    position: relative;
+    border: 1px solid #222;
+}
+
+.deckContent iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.closeDeck {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
 }
 
 /* ===== NAV ===== */
@@ -64,6 +129,7 @@ body {
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
+
     body {
         padding: 20px;
         padding-bottom: 70px;
@@ -73,8 +139,15 @@ body {
     .main {
         position: static;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
         padding: 0;
+        overflow: visible;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        padding-right: 0;
     }
 
     .wip {
@@ -92,9 +165,12 @@ body {
     .nav a {
         font-size: 13px;
     }
+
+    .deckContent {
+        width: 95%;
+        height: 80%;
+    }
 }
-
-
 </style>
 </head>
 
@@ -106,10 +182,55 @@ body {
 </div>
 
 <div class="main">
+
+    <!-- LEFT COLUMN -->
     <div class="left">
-        <div class="wip">wip</div>
+        <div class="wip">
+tentative title
+----------------
+take care
+
+duration
+--------
+30 minutes
+
+logline
+-------
+a divorced home-care nurse has to return to her family, who she defied for love, after being fired abruptly from a job.
+        </div>
     </div>
-    <div class="right"></div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right">
+        <div class="wip">
+<span class="section-stage">current stage of development</span>
+----------------------------
+- Finalising script: Aiming to complete by June 2026
+- Crowdfunding campaign ongoing
+
+
+<span class="section-next">next steps</span>
+----------
+- Finalise crew and cast.
+- Begin shot breakdown post script-finalisation
+
+
+<span class="section-support">support us</span>
+----------
+this film is currently being developed independently.
+you can <span class="deck-link" onclick="openDeck()">view full crowdfunding deck here</span>.
+
+        </div>
+    </div>
+
+</div>
+
+<!-- PDF Overlay -->
+<div id="deckOverlay">
+    <div class="deckContent">
+        <button class="closeDeck" onclick="closeDeck()">×</button>
+        <iframe src="Take Care - Funding Call.pdf"></iframe>
+    </div>
 </div>
 
 <div class="nav">
@@ -118,6 +239,16 @@ body {
     <a href="blog.html">[ current ]</a>
     <a href="contact.html">[ contact ]</a>
 </div>
+
+<script>
+function openDeck() {
+    document.getElementById('deckOverlay').style.display = 'flex';
+}
+
+function closeDeck() {
+    document.getElementById('deckOverlay').style.display = 'none';
+}
+</script>
 
 </body>
 </html>
