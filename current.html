@@ -1,284 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kishore Ravi — Current</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="header.css">
+    <title>Kishore Ravi — Current</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <link rel="stylesheet" href="header.css">
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
+    <style>
 
-body {
-    background: #000;
-    color: #fff;
-    font-family: monospace;
-    font-size: 16px;
-    overflow: hidden;
-}
+        /* =========================================
+           RESET
+        ========================================= */
 
-/* ===== MAIN ===== */
+        * {
+            box-sizing: border-box;
+        }
 
-.main {
-    position: absolute;
-    top: 120px;
-    bottom: 70px;
-    left: 40px;
-    right: 40px;
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-    display: flex;
-    overflow: hidden;
-}
 
-.left {
-    width: 40%;
-    padding-right: 40px;
-}
+        /* =========================================
+           BODY
+        ========================================= */
 
-.right {
-    width: 60%;
-}
+        body {
+            background: #000;
+            color: #fff;
 
-.wip {
-    line-height: 1.6;
-    white-space: pre-line;
-}
+            font-family: monospace;
+            font-size: 16px;
 
+            overflow: hidden;
+        }
 
-/* ===== SECTION COLORS ===== */
 
-.section-stage {
-    color: #6ee7b7;
-}
+        /* =========================================
+           MAIN CONTENT
+        ========================================= */
 
-.section-next {
-    color: #60a5fa;
-}
+        .main {
+            position: absolute;
 
-.section-support {
-    color: #fbbf24;
-}
+            top: 120px;
+            right: 40px;
+            bottom: 70px;
+            left: 40px;
 
+            display: flex;
 
-/* ===== LINK STYLE ===== */
+            overflow: hidden;
+        }
 
-.deck-link {
-    cursor: pointer;
-    text-decoration: underline;
-}
 
-.deck-link:hover {
-    opacity: 0.7;
-}
+        /* =========================================
+           COLUMNS
+        ========================================= */
 
+        .left {
+            width: 40%;
+            padding-right: 40px;
+        }
 
-/* ===== PDF OVERLAY ===== */
+        .right {
+            width: 60%;
+        }
 
-#deckOverlay {
-    display: none;
-    position: fixed;
-    inset: 0;
 
-    background: rgba(0, 0, 0, 0.9);
+        /* =========================================
+           TEXT
+        ========================================= */
 
-    z-index: 3000;
+        .wip {
+            line-height: 1.6;
+            white-space: pre-line;
+        }
 
-    justify-content: center;
-    align-items: center;
-}
 
-.deckContent {
-    width: 80%;
-    height: 85%;
+        /* =========================================
+           SECTION COLORS
+        ========================================= */
 
-    background: #000;
+        .section-stage {
+            color: #6ee7b7;
+        }
 
-    position: relative;
+        .section-next {
+            color: #60a5fa;
+        }
 
-    border: 1px solid #222;
-}
+        .section-support {
+            color: #fbbf24;
+        }
 
-.deckContent iframe {
-    width: 100%;
-    height: 100%;
 
-    border: none;
-}
+        /* =========================================
+           PDF LINK
+        ========================================= */
 
-.closeDeck {
-    position: absolute;
+        .deck-link {
+            cursor: pointer;
+            text-decoration: underline;
+        }
 
-    top: 10px;
-    right: 14px;
+        .deck-link:hover {
+            opacity: 0.7;
+        }
 
-    background: none;
-    border: none;
 
-    color: #fff;
-    font-size: 26px;
+        /* =========================================
+           PDF OVERLAY — DESKTOP
+        ========================================= */
 
-    cursor: pointer;
+        #deckOverlay {
+            display: none;
 
-    z-index: 10;
-}
+            position: fixed;
+            inset: 0;
 
+            width: 100%;
+            height: 100%;
 
-/* ===== NAV ===== */
+            background: rgba(0, 0, 0, 0.95);
 
-.nav {
-    position: fixed;
+            z-index: 3000;
 
-    bottom: 0;
-    left: 50%;
+            justify-content: center;
+            align-items: center;
+        }
 
-    transform: translateX(-50%);
+        .deckContent {
+            position: relative;
 
-    width: 60%;
-    height: 70px;
+            width: 80%;
+            height: 85%;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+            background: #000;
 
-    background: #000;
+            border: 1px solid #222;
+        }
 
-    z-index: 1000;
-}
+        .deckContent iframe {
+            display: block;
 
-.nav a {
-    color: #fff;
-    text-decoration: none;
+            width: 100%;
+            height: 100%;
 
-    font-size: 18px;
-}
+            border: 0;
+        }
 
+        .closeDeck {
+            position: absolute;
 
-/* ===== MOBILE ===== */
+            top: 8px;
+            right: 12px;
 
-@media (max-width: 768px) {
+            width: 32px;
+            height: 32px;
 
-    html,
-    body {
-        min-height: 100%;
-        height: auto;
-    }
+            padding: 0;
 
-    body {
-        padding: 20px;
+            background: #000;
+            border: none;
 
-        /*
-         * The navbar is 70px high.
-         * Extra space ensures the final line can
-         * scroll completely above the navbar.
-         */
-        padding-bottom: 90px;
+            color: #fff;
 
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
+            font-family: monospace;
+            font-size: 28px;
+            line-height: 28px;
 
+            cursor: pointer;
 
-    /* ===== MOBILE MAIN ===== */
+            z-index: 10;
+        }
 
-    .main {
-        position: static;
+        .closeDeck:hover {
+            opacity: 0.6;
+        }
 
-        display: flex;
-        flex-direction: column;
 
-        gap: 30px;
+        /* =========================================
+           NAVIGATION
+        ========================================= */
 
-        padding: 0;
+        .nav {
+            position: fixed;
 
-        overflow: visible;
-    }
+            left: 50%;
+            bottom: 0;
 
-    .left,
-    .right {
-        width: 100%;
-        padding-right: 0;
-    }
+            transform: translateX(-50%);
 
-    .wip {
-        font-size: 14px;
-        line-height: 1.6;
-    }
+            width: 60%;
+            height: 70px;
 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-    /* ===== MOBILE NAV ===== */
+            background: #000;
 
-    .nav {
-        position: fixed;
+            z-index: 1000;
+        }
 
-        left: 0;
-        bottom: 0;
+        .nav a {
+            color: #fff;
 
-        transform: none;
+            text-decoration: none;
 
-        width: 100%;
-        height: 70px;
+            font-size: 18px;
+        }
 
-        padding: 0 20px;
 
-        /*
-         * Keeps the navbar consistent while
-         * accounting for iPhone's bottom safe area.
-         */
-        padding-bottom: env(safe-area-inset-bottom);
+        /* =========================================
+           MOBILE
+        ========================================= */
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @media (max-width: 768px) {
 
-        background: #000;
+            html,
+            body {
+                width: 100%;
+                min-height: 100%;
+                height: auto;
+            }
 
-        z-index: 1000;
-    }
+            body {
+                padding: 20px;
 
-    .nav a {
-        font-size: 13px;
-    }
+                /*
+                 * Extra bottom space allows the final
+                 * content to scroll above the fixed nav.
+                 */
+                padding-bottom: calc(
+                    90px + env(safe-area-inset-bottom)
+                );
 
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
 
-    /* ===== MOBILE PDF ===== */
 
-    .deckContent {
-        width: 95%;
-        height: 80%;
-    }
-}
-</style>
+            /* -----------------------------------------
+               MAIN
+            ----------------------------------------- */
+
+            .main {
+                position: static;
+
+                width: 100%;
+                height: auto;
+
+                display: flex;
+                flex-direction: column;
+
+                gap: 30px;
+
+                overflow: visible;
+            }
+
+
+            /* -----------------------------------------
+               COLUMNS
+            ----------------------------------------- */
+
+            .left,
+            .right {
+                width: 100%;
+
+                padding: 0;
+            }
+
+
+            /* -----------------------------------------
+               TEXT
+            ----------------------------------------- */
+
+            .wip {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+
+            /* -----------------------------------------
+               NAVIGATION
+            ----------------------------------------- */
+
+            .nav {
+                left: 0;
+                bottom: 0;
+
+                transform: none;
+
+                width: 100%;
+                height: calc(
+                    70px + env(safe-area-inset-bottom)
+                );
+
+                padding: 0 20px;
+                padding-bottom: env(safe-area-inset-bottom);
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                background: #000;
+            }
+
+            .nav a {
+                font-size: 13px;
+            }
+
+
+            /* -----------------------------------------
+               PDF OVERLAY
+               
+               This is mainly for desktop.
+               On mobile, JavaScript opens the PDF
+               directly in the browser instead.
+            ----------------------------------------- */
+
+            #deckOverlay {
+                display: none;
+            }
+        }
+
+
+        /* =========================================
+           VERY SMALL PHONES
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+            body {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .nav {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .nav a {
+                font-size: 12px;
+            }
+        }
+
+    </style>
 </head>
 
 
 <body>
 
-<!-- ===== HEADER ===== -->
 
-<div class="header">
-    <h1>kishore ravi</h1>
-    <div class="role">filmmaker - director - editor</div>
-</div>
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <div class="header">
+
+        <h1>kishore ravi</h1>
+
+        <div class="role">
+            filmmaker - director - editor
+        </div>
+
+    </div>
 
 
-<!-- ===== MAIN CONTENT ===== -->
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================= -->
 
-<div class="main">
+    <main class="main">
 
-    <!-- LEFT COLUMN -->
 
-    <div class="left">
+        <!-- =====================================
+             LEFT COLUMN
+        ===================================== -->
 
-        <div class="wip">
+        <section class="left">
+
+            <div class="wip">
+
 tentative title
 ----------------
 take care
@@ -290,16 +402,19 @@ duration
 logline
 -------
 a divorced home-care nurse has to return to her family, who she defied for love, after being fired abruptly from a job.
-        </div>
 
-    </div>
+            </div>
+
+        </section>
 
 
-    <!-- RIGHT COLUMN -->
+        <!-- =====================================
+             RIGHT COLUMN
+        ===================================== -->
 
-    <div class="right">
+        <section class="right">
 
-        <div class="wip">
+            <div class="wip">
 
 <span class="section-stage">current stage of development</span>
 ----------------------------
@@ -311,67 +426,174 @@ a divorced home-care nurse has to return to her family, who she defied for love,
 ----------
 - Looking for international co-production partners (SEPT 2026)
 - Begin casting (OCT 2026)
-- Begin hiring crew and pre-production 
+- Begin hiring crew and pre-production
 
 
 <span class="section-support">support us</span>
 ----------
 this film is currently being developed independently.
-you can <span class="deck-link" onclick="openDeck()">view full crowdfunding deck here</span>.
+you can <span
+    class="deck-link"
+    onclick="openDeck()"
+>view full crowdfunding deck here</span>.
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         PDF OVERLAY — DESKTOP
+    ========================================= -->
+
+    <div
+        id="deckOverlay"
+        aria-hidden="true"
+    >
+
+        <div class="deckContent">
+
+            <button
+                type="button"
+                class="closeDeck"
+                onclick="closeDeck()"
+                aria-label="Close PDF"
+            >
+                ×
+            </button>
+
+            <iframe
+                src="take-care-funding-call.pdf"
+                title="Take Care — Funding Deck"
+            ></iframe>
 
         </div>
 
     </div>
 
-</div>
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
+
+    <nav class="nav">
+
+        <a href="index.html">
+            [ about ]
+        </a>
+
+        <a href="work.html">
+            [ work ]
+        </a>
+
+        <a href="current.html">
+            [ current ]
+        </a>
+
+        <a href="contact.html">
+            [ contact ]
+        </a>
+
+    </nav>
 
 
-<!-- ===== PDF OVERLAY ===== -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
 
-<div id="deckOverlay">
+    <script>
 
-    <div class="deckContent">
-
-        <button
-            class="closeDeck"
-            onclick="closeDeck()"
-        >
-            ×
-        </button>
-
-        <iframe src="Take Care - Funding Call.pdf"></iframe>
-
-    </div>
-
-</div>
+        const deckOverlay =
+            document.getElementById("deckOverlay");
 
 
-<!-- ===== NAVIGATION ===== -->
+        function openDeck() {
 
-<div class="nav">
+            /*
+             * Mobile browsers are unreliable when displaying
+             * PDFs inside an iframe.
+             *
+             * On phones, let Safari/Chrome open the PDF
+             * using its native PDF viewer.
+             */
 
-    <a href="index.html">[ about ]</a>
+            if (window.innerWidth <= 768) {
 
-    <a href="work.html">[ work ]</a>
+                window.open(
+                    "take-care-funding-call.pdf",
+                    "_blank"
+                );
 
-    <a href="current.html">[ current ]</a>
-
-    <a href="contact.html">[ contact ]</a>
-
-</div>
+                return;
+            }
 
 
-<!-- ===== JAVASCRIPT ===== -->
+            /*
+             * Desktop:
+             * display the PDF inside the modal.
+             */
 
-<script>
-function openDeck() {
-    document.getElementById('deckOverlay').style.display = 'flex';
-}
+            deckOverlay.style.display = "flex";
 
-function closeDeck() {
-    document.getElementById('deckOverlay').style.display = 'none';
-}
-</script>
+            deckOverlay.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+        }
+
+
+        function closeDeck() {
+
+            deckOverlay.style.display = "none";
+
+            deckOverlay.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+        }
+
+
+        /*
+         * Allow ESC to close the desktop PDF viewer.
+         */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape" &&
+                    deckOverlay.style.display === "flex"
+                ) {
+                    closeDeck();
+                }
+
+            }
+        );
+
+
+        /*
+         * Clicking the dark area outside the PDF
+         * closes the desktop viewer.
+         */
+
+        deckOverlay.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === deckOverlay) {
+                    closeDeck();
+                }
+
+            }
+        );
+
+    </script>
 
 </body>
+
 </html>
