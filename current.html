@@ -116,7 +116,7 @@
 
 
         /* =========================================
-           PDF OVERLAY — DESKTOP
+           PDF OVERLAY
         ========================================= */
 
         #deckOverlay {
@@ -235,10 +235,6 @@
             body {
                 padding: 20px;
 
-                /*
-                 * Extra bottom space allows the final
-                 * content to scroll above the fixed nav.
-                 */
                 padding-bottom: calc(
                     90px + env(safe-area-inset-bottom)
                 );
@@ -320,16 +316,31 @@
 
 
             /* -----------------------------------------
-               PDF OVERLAY
-               
-               This is mainly for desktop.
-               On mobile, JavaScript opens the PDF
-               directly in the browser instead.
+               PDF OVERLAY — MOBILE
             ----------------------------------------- */
 
             #deckOverlay {
-                display: none;
+                align-items: stretch;
+                justify-content: stretch;
             }
+
+            .deckContent {
+                width: 100%;
+                height: 100%;
+
+                border: none;
+            }
+
+            .deckContent iframe {
+                width: 100%;
+                height: 100%;
+            }
+
+            .closeDeck {
+                top: 10px;
+                right: 10px;
+            }
+
         }
 
 
@@ -352,6 +363,7 @@
             .nav a {
                 font-size: 12px;
             }
+
         }
 
     </style>
@@ -445,7 +457,7 @@ you can <span
 
 
     <!-- =========================================
-         PDF OVERLAY — DESKTOP
+         PDF OVERLAY
     ========================================= -->
 
     <div
@@ -465,7 +477,7 @@ you can <span
             </button>
 
             <iframe
-                src="take-care-funding-call.pdf"
+                src="Take Care - Funding Call.pdf"
                 title="Take Care — Funding Deck"
             ></iframe>
 
@@ -509,30 +521,17 @@ you can <span
             document.getElementById("deckOverlay");
 
 
+        /* =========================================
+           OPEN DECK
+        ========================================= */
+
         function openDeck() {
 
             /*
-             * Mobile browsers are unreliable when displaying
-             * PDFs inside an iframe.
+             * The PDF stays inside the existing iframe
+             * on both desktop and mobile.
              *
-             * On phones, let Safari/Chrome open the PDF
-             * using its native PDF viewer.
-             */
-
-            if (window.innerWidth <= 768) {
-
-                window.open(
-                    "take-care-funding-call.pdf",
-                    "_blank"
-                );
-
-                return;
-            }
-
-
-            /*
-             * Desktop:
-             * display the PDF inside the modal.
+             * On mobile, CSS makes the viewer full-screen.
              */
 
             deckOverlay.style.display = "flex";
@@ -544,6 +543,10 @@ you can <span
 
         }
 
+
+        /* =========================================
+           CLOSE DECK
+        ========================================= */
 
         function closeDeck() {
 
@@ -557,9 +560,9 @@ you can <span
         }
 
 
-        /*
-         * Allow ESC to close the desktop PDF viewer.
-         */
+        /* =========================================
+           ESC KEY
+        ========================================= */
 
         document.addEventListener(
             "keydown",
@@ -576,10 +579,9 @@ you can <span
         );
 
 
-        /*
-         * Clicking the dark area outside the PDF
-         * closes the desktop viewer.
-         */
+        /* =========================================
+           CLICK OUTSIDE PDF
+        ========================================= */
 
         deckOverlay.addEventListener(
             "click",
